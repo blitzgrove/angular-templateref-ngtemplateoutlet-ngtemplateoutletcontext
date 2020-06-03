@@ -1,0 +1,31 @@
+<ng-template #templateOne let-message let-showAdditional="show">
+  One <br />
+  <ng-container *ngIf="showAdditional">
+    Showing additional content... <br />
+    {{ message }}
+  </ng-container>
+</ng-template>
+
+<ng-template #templateTwo let-message let-showAdditional="show">
+  Two <br />
+  <ng-container *ngIf="showAdditional">
+    Showing additional content... <br />
+    {{ message }}
+  </ng-container>
+</ng-template>
+
+<ng-template #templateThree let-message let-showAdditional="show">
+  Three <br />
+  <ng-container *ngIf="showAdditional">
+    Showing additional content... <br />
+    {{ message }}
+  </ng-container>
+</ng-template>
+
+<ng-container *ngTemplateOutlet="template; context: context"></ng-container>
+<br /><br />
+
+<button type="button" (mouseup)="showRef(templateOne, {$implicit: 'Custom message', show: true})">Show Template 1</button>
+<button type="button" (mouseup)="showRef(templateTwo, {show: false})">Show Template 2</button>
+<button type="button" (mouseup)="showRef(templateThree, {$implicit: 'Default value', show: true})">Show Template 3</button>
+<button type="button" (mouseup)="showRef(null, null)">Hide all</button>
